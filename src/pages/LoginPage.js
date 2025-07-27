@@ -18,10 +18,10 @@ const LoginPage = () => {
       if(response.status === 200) {
         setUser(response.data.user);
         
-        sessionStorage.setItem("token", response.data.token);
+        localStorage.setItem("token", response.data.token);
         api.defaults.headers["authorization"] = `Bearer ${response.data.token}`;
         setError("");
-        navigate("/");
+        navigate("/todo");
       } else {
         throw new Error(response.data.message || "로그인에 실패했습니다.");
       }

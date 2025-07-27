@@ -60,5 +60,6 @@ const RegisterPage = () => {
       </Form>
     </div>
   );
+};
 
 export default RegisterPage;

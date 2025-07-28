@@ -4,12 +4,12 @@ import Form from "react-bootstrap/Form";
 import {useState} from "react";
 import { Link } from "react-router-dom";
 import api from "../utils/api";
-import {useNavigate} from "react-router-dom"; 
-const LoginPage = () => {
+import {useNavigate, Navigate} from "react-router-dom"; 
+const LoginPage = ({setUser}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [user, setUser] = useState(null);
+  
   const navigate = useNavigate();
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -29,6 +29,7 @@ const LoginPage = () => {
       setError(error.message || "로그인 중 오류가 발생했습니다.");
     }
   }
+  if(user){return <Navigate to="/" />}
   return (
     <div className="display-center">
       {error && <div className="red-error">{error}</div>}
